@@ -1,0 +1,30 @@
+@Container {
+    display: flex;
+    @Slider {
+        bind: "synth__volume";
+        x: 0;
+        y: 0;
+        width: 100%;
+    }
+}
+
+@Tabs {
+    display: flex;
+    loop(it in 1:4:2) {
+          @Tab {
+            width: 25%;
+            height: 100%;
+            name: $"Tab {it}";
+          }
+    }
+}
+
+@Container {
+    x: 100% - 25;
+    padding: 10;
+
+    @Label {
+        text: "meow";
+    }
+    include "otherExample";
+}
