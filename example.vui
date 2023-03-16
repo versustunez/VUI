@@ -1,3 +1,8 @@
+// Setup Root Container to be specific width and height
+width: 1300;
+height: 400;
+
+// @Container is like a Group and has no special rules
 @Container {
     display: flex;
     @Slider {

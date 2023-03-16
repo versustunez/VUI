@@ -218,7 +218,7 @@ Ref<AstNode> AstUtils::ParseToken(TokenStream &tokenStream) {
   switch (currentToken.Type) {
   case TokenType::Component: return CreateAstComponent(tokenStream);
   case TokenType::Keyword: return CreateKeywordNode(currentToken, tokenStream);
-  case TokenType::Identifier:
+  case TokenType::Identifier: return CreatePropertyNode(currentToken, tokenStream);
   default: {
     return CreateInvalidNode(tokenStream);
   }

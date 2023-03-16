@@ -58,7 +58,7 @@ void Compiler::HandleChar(char token) {
   case ')': return MakeToken(TokenType::RightParenthesis);
   case ';': return MakeToken(TokenType::Semicolon);
   case '/':
-    return m_Stream.Peek() == '/' ? m_Stream.SkipWhile('\n')
+    return m_Stream.Peek() == '/' ? m_Stream.SkipWhileNot('\n')
                                   : MakeToken(TokenType::Slash);
   case '%': return MakeToken(TokenType::Percent);
   case '"': {

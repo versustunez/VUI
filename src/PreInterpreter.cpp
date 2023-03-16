@@ -12,6 +12,7 @@ Ref<VUI::InterpretedComponent> PreInterpreter::Run() {
     return nullptr;
 
   auto base = CreateRef<VUI::InterpretedComponent>();
+  base->ComponentName = "Container";
   // set if found properties in home! ;) but we need some default to not crash
   base->ComponentPosition = {0, 0, 1200, 700};
   for (auto &astNode : m_AstNodes) {

@@ -29,8 +29,8 @@ public:
       Advance();
   }
 
-  void SkipWhile(char ch) {
-    while (Peek() == ch && !IsEndOfStream())
+  void SkipWhileNot(char ch) {
+    while (Peek() != ch && !IsEndOfStream())
       Advance();
   }
 
