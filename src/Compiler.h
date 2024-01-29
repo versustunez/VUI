@@ -7,7 +7,7 @@
 
 #include <vector>
 
-namespace VeNo::VUI {
+namespace VUI {
 
 class Compiler {
 public:
@@ -20,7 +20,7 @@ public:
 
 protected:
   void HandleChar(char);
-  void MakeToken(TokenType type, u32 begin, u32 end);
+  void MakeToken(TokenType type, std::uint32_t begin, std::uint32_t end);
   void MakeToken(TokenType type);
   static bool IsValidKeyword(std::string_view identifier);
 
@@ -31,4 +31,4 @@ protected:
   TokenStream m_Tokens{};
 };
 
-} // namespace VeNo::VUI
+} // namespace VUI

@@ -6,16 +6,18 @@
 
 #include <vector>
 
-namespace VeNo::VUI {
+namespace VUI {
 
 class PreInterpreter {
 public:
   void ConvertTokensToNodes(TokenStream &);
   Ref<VUI::InterpretedComponent> Run();
 
+  void Dump();
+
 protected:
   friend AstNode;
   std::vector<Ref<AstNode>> m_AstNodes;
   VariableTable m_VariableTable{};
 };
-} // namespace VeNo::VUI
+} // namespace VUI

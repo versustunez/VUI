@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string_view>
 
-namespace VeNo::VUI {
+namespace VUI {
 
 class StringStream {
 public:
@@ -43,14 +43,14 @@ public:
     return m_Position > m_Stream.size() || m_Stream[m_Position] == '\0';
   }
 
-  u32 GetPosition() { return m_Position; }
-  u32 GetCurrentPosition() { return m_Position - 1; }
+  std::uint32_t GetPosition() { return m_Position; }
+  std::uint32_t GetCurrentPosition() { return m_Position - 1; }
 
   static bool IsAlphaNumeric(char ch) { return isalnum(ch); }
   static bool IsAlpha(char ch) { return isalpha(ch); }
   static bool IsNumeric(char ch) { return isdigit(ch); }
 
-  u32 ExtractString() {
+  std::uint32_t ExtractString() {
     char ch = Peek();
     while (!(ch == '"' || ch == '\0')) {
       ch = Advance();
@@ -58,22 +58,22 @@ public:
     return IsEndOfStream() ? 0 : m_Position-1;
   }
 
-  u32 ExtractNumber() {
+  std::uint32_t ExtractNumber() {
     while (IsNumeric(Peek())) {
       Advance();
     }
     return m_Position;
   }
 
-  u32 ExtractIdentifier() {
+  std::uint32_t ExtractIdentifier() {
     while (IsAlphaNumeric(Peek())) {
       Advance();
     }
     return m_Position;
   }
 
-  [[nodiscard]] std::string_view GetView(u32 start, u32 end) const {
-    u32 n = end - start;
+  [[nodiscard]] std::string_view GetView(std::uint32_t start, std::uint32_t end) const {
+    std::uint32_t n = end - start;
     if (n == 0)
       n = 1;
     auto sub = m_Stream.substr(start, n);
@@ -82,6 +82,6 @@ public:
 
 protected:
   std::string_view m_Stream{};
-  u32 m_Position{0};
+  std::uint32_t m_Position{0};
 };
-} // namespace VeNo::VUI
+} // namespace VUI

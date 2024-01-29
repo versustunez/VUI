@@ -1,6 +1,6 @@
 #include "AstNode.h"
 
-namespace VeNo::VUI {
+namespace VUI {
 
 static void DumpComponentType(AstNode *node, int depth) {
   WriteDepth(depth);
@@ -82,4 +82,4 @@ void AstComponent::Dump(int depth) {
     }
   }
 }
-} // namespace VeNo::VUI
+} // namespace VUI

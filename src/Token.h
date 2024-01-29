@@ -2,7 +2,7 @@
 
 #include "TypeDefs.h"
 
-namespace VeNo::VUI {
+namespace VUI {
 
 enum class TokenType : int {
   Keyword = 0, // loop and internal identifier
@@ -59,10 +59,10 @@ struct Token {
 
 struct TokenStream {
   std::vector<Token> Tokens;
-  u32 Position{0};
+  std::uint32_t Position{0};
   const Token &Consume();
-  Token Peek(u32 offset = 0);
-  TokenType PeekType(u32 offset = 0);
+  Token Peek(std::uint32_t offset = 0);
+  TokenType PeekType(std::uint32_t offset = 0);
   void ConsumeIfMatch(TokenType type);
 
   bool IsNotEnd() {
@@ -79,4 +79,4 @@ struct TokenStream {
 protected:
   bool m_IsInvalid;
 };
-} // namespace VeNo::VUI
+} // namespace VUI

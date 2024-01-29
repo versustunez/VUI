@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 
-namespace VeNo::VUI {
+namespace VUI {
 
 static bool ReadFile(const std::string &file, std::string &result) {
   std::ifstream in(file, std::ios::in | std::ios::binary);
@@ -40,12 +40,12 @@ void Compiler::Parse() {
   MakeToken(TokenType::EndOfFile);
 }
 
-void Compiler::MakeToken(TokenType type, u32 begin, u32 end) {
+void Compiler::MakeToken(TokenType type, std::uint32_t begin, std::uint32_t end) {
   m_Tokens.AddToken({m_Stream.GetView(begin, end), type});
 }
 
 void Compiler::MakeToken(TokenType type) {
-  u32 pos = m_Stream.GetPosition();
+  std::uint32_t pos = m_Stream.GetPosition();
   m_Tokens.AddToken({m_Stream.GetView(pos, pos + 1), type});
 }
 
@@ -62,7 +62,7 @@ void Compiler::HandleChar(char token) {
                                   : MakeToken(TokenType::Slash);
   case '%': return MakeToken(TokenType::Percent);
   case '"': {
-    u32 pos = m_Stream.GetPosition();
+    std::uint32_t pos = m_Stream.GetPosition();
     return MakeToken(TokenType::StringLiteral, pos, m_Stream.ExtractString());
   }
 
@@ -74,14 +74,14 @@ void Compiler::HandleChar(char token) {
   }
 
   if (StringStream::IsNumeric(token)) {
-    u32 pos = m_Stream.GetCurrentPosition();
-    u32 end = m_Stream.ExtractNumber();
+    std::uint32_t pos = m_Stream.GetCurrentPosition();
+    std::uint32_t end = m_Stream.ExtractNumber();
     return MakeToken(TokenType::Number, pos, end);
   }
 
   if (StringStream::IsAlpha(token)) {
-    u32 pos = m_Stream.GetCurrentPosition();
-    u32 end = m_Stream.ExtractIdentifier();
+    std::uint32_t pos = m_Stream.GetCurrentPosition();
+    std::uint32_t end = m_Stream.ExtractIdentifier();
 
     if (IsValidKeyword(m_Stream.GetView(pos, end)))
       return MakeToken(TokenType::Keyword, pos, end);
@@ -102,4 +102,4 @@ void Compiler::DumpTokens() {
     std::cout << TokenTypeToString(token.Type) << " >> " << token.Value << "\n";
 }
 const StringStream &Compiler::GetStream() { return m_Stream; }
-} // namespace VeNo::VUI
+} // namespace VUI

@@ -1,6 +1,6 @@
 #include "PreInterpreter.h"
 
-namespace VeNo::VUI {
+namespace VUI {
 
 void PreInterpreter::ConvertTokensToNodes(TokenStream &tokenStream) {
   while (tokenStream.IsNotEnd())
@@ -21,4 +21,11 @@ Ref<VUI::InterpretedComponent> PreInterpreter::Run() {
   return base;
 }
 
-} // namespace VeNo::VUI
+void PreInterpreter::Dump() {
+  std::cout << "[PreInterpreter] Dump AstNodes\n\n";
+  for (auto &node : m_AstNodes) {
+    node->Dump(0);
+  }
+}
+
+} // namespace VUI

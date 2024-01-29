@@ -1,9 +1,9 @@
 #include "Token.h"
 
-namespace VeNo::VUI {
+namespace VUI {
 const Token &TokenStream::Consume() { return Tokens[Position++]; }
-Token TokenStream::Peek(u32 offset) { return Tokens[Position + offset]; }
-TokenType TokenStream::PeekType(u32 offset) {
+Token TokenStream::Peek(std::uint32_t offset) { return Tokens[Position + offset]; }
+TokenType TokenStream::PeekType(std::uint32_t offset) {
   return Tokens[Position + offset].Type;
 }
 void TokenStream::ConsumeIfMatch(TokenType type) {
@@ -12,4 +12,4 @@ void TokenStream::ConsumeIfMatch(TokenType type) {
 }
 void TokenStream::SetIsValid(bool validOrNot) { m_IsInvalid = !validOrNot; }
 
-} // namespace VeNo::VUI
+} // namespace VUI

@@ -1,5 +1,5 @@
 #include "AstNode.h"
-namespace VeNo::VUI {
+namespace VUI {
 
 double AstMathExpression::Process(double parentSize) {
   if (Children.empty())
@@ -98,4 +98,4 @@ void AstComponent::Run(InterpretedComponent &component, VariableTable &table) {
     child->Run(newComponent, table);
   }
 }
-} // namespace VeNo::VUI
+} // namespace VUI

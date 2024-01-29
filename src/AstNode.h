@@ -8,7 +8,7 @@
 #ifdef __GNUC__
 #include <cxxabi.h>
 #endif
-namespace VeNo::VUI {
+namespace VUI {
 
 struct VariableTable {
   VariableTable() = default;
@@ -28,7 +28,7 @@ struct VariableTable {
       : public AstNodeInstance<V_CAT(Ast, T), AstNodeType::T>,                 \
         public X
 
-enum class AstNodeType : u32 {
+enum class AstNodeType : std::uint32_t {
   Unknown = 0,
   Property,
   String,
@@ -179,4 +179,4 @@ protected:
   static Ref<AstNode> CreateMathOrNumberNode(Token &, TokenStream &);
 };
 
-} // namespace VeNo::VUI
+} // namespace VUI

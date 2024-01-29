@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-namespace VeNo::VUI {
+namespace VUI {
 
 static double stringToDouble(const std::string &numberString) {
   char *end;
@@ -224,4 +224,4 @@ Ref<AstNode> AstUtils::ParseToken(TokenStream &tokenStream) {
   }
   }
 }
-} // namespace VeNo::VUI
+} // namespace VUI
